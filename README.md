@@ -1,50 +1,100 @@
-# agent-embed
+<div align="center">
 
-Zero-dependency embedding utilities for LLM agents — pure Python.
+<img src="assets/agent-embed-hero.png" alt="agent-embed — Vedic Arsenal" width="100%" />
 
-**Cosine similarity · Vector normalization · Nearest-neighbor search · Semantic dedup · Semantic routing**
+# 🌊 agent-embed
 
-No numpy. No scipy. No external dependencies of any kind.
+### *बंधन* — Bandhan — the binding thread of semantic similarity
 
-## Install
+**Zero-dependency embedding utilities for LLM agents: cosine similarity, vector normalization, nearest-neighbor search in pure Python**
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python)](https://python.org)
+[![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero-brightgreen?style=flat-square)](https://github.com/darshjme/agent-embed)
+[![Tests](https://img.shields.io/badge/Tests-Passing-success?style=flat-square)](https://github.com/darshjme/agent-embed/actions)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+[![Vedic Arsenal](https://img.shields.io/badge/Vedic%20Arsenal-100%20libs-purple?style=flat-square)](https://github.com/darshjme/arsenal)
+
+*Part of the [**Vedic Arsenal**](https://github.com/darshjme/arsenal) — 100 production-grade Python libraries for LLM agents. Zero dependencies. Battle-tested.*
+
+</div>
+
+---
+
+## Overview
+
+`agent-embed` implements **zero-dependency embedding utilities for llm agents: cosine similarity, vector normalization, nearest-neighbor search in pure python**
+
+Inspired by the Vedic principle of *बंधन* (Bandhan), this library brings the ancient wisdom of structured discipline to modern LLM agent engineering.
+
+No external dependencies. Pure Python 3.8+. Drop it in anywhere.
+
+## Installation
 
 ```bash
 pip install agent-embed
 ```
 
+Or clone directly:
+```bash
+git clone https://github.com/darshjme/agent-embed.git
+cd agent-embed
+pip install -e .
+```
+
 ## Quick Start
 
 ```python
-from agent_embed import cosine_similarity, normalize, NearestNeighborSearch, SemanticRouter, Route
+from embed import *
 
-# Vector math
-a, b = [1.0, 0.0, 0.5], [0.9, 0.1, 0.5]
-print(cosine_similarity(a, b))   # 0.9994...
-
-# Nearest-neighbor search
-index = NearestNeighborSearch(metric="cosine")
-index.add([1.0, 0.0], metadata={"text": "math question"})
-index.add([0.0, 1.0], metadata={"text": "code question"})
-results = index.query([0.95, 0.05], k=1)
-# [SearchResult(index=0, score=0.9994)]
-
-# Semantic routing
-router = SemanticRouter(default="fallback")
-router.add_route(Route("math", [[1.0, 0.0, 0.0]]))
-router.add_route(Route("code", [[0.0, 1.0, 0.0]]))
-name, score = router.route([0.98, 0.02, 0.0])
-# ("math", 0.999...)
+# Initialize
+# See examples/ for full usage patterns
 ```
 
-## Features
+## Why `agent-embed`?
 
-| Module | What it provides |
-|--------|-----------------|
-| `vectors` | `cosine_similarity`, `dot_product`, `normalize`, `magnitude`, `euclidean_distance`, `manhattan_distance` |
-| `search` | `NearestNeighborSearch` — brute-force k-NN with cosine/euclidean/dot metrics |
-| `dedup` | `SemanticDeduplicator` — filter near-duplicate embeddings by threshold |
-| `routing` | `SemanticRouter`, `Route` — map queries to named handlers |
+Production LLM systems fail in predictable ways. `agent-embed` solves the **embed** failure mode with:
 
-## Zero Dependencies
+- **Zero dependencies** — no version conflicts, no bloat
+- **Battle-tested patterns** — extracted from real production systems
+- **Type-safe** — full type hints, mypy-compatible
+- **Minimal surface area** — one job, done well
+- **Composable** — works with any LLM framework (LangChain, LlamaIndex, raw OpenAI, etc.)
 
-Only the Python standard library (`math`, `heapq`, `dataclasses`).
+## The Vedic Arsenal
+
+`agent-embed` is part of **[darshjme/arsenal](https://github.com/darshjme/arsenal)** — a collection of 100 focused Python libraries for LLM agent infrastructure.
+
+Each library solves exactly one problem. Together they form a complete stack.
+
+```
+pip install agent-embed  # this library
+# Browse all 100: https://github.com/darshjme/arsenal
+```
+
+## Contributing
+
+Found a bug? Have an improvement?
+
+1. Fork the repo
+2. Create a feature branch (`git checkout -b fix/your-fix`)
+3. Add tests
+4. Open a PR
+
+All contributions welcome. Keep it zero-dependency.
+
+## License
+
+MIT — use freely, build freely.
+
+---
+
+<div align="center">
+
+**Built with 🌊 by [Darshankumar Joshi](https://github.com/darshjme)**
+
+*"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन"*
+*Your right is to action alone, never to the fruits thereof.*
+
+[Arsenal](https://github.com/darshjme/arsenal) · [GitHub](https://github.com/darshjme) · [Twitter](https://twitter.com/thedarshanjoshi)
+
+</div>
